@@ -12,6 +12,7 @@ export const Backdrop = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  align-self: center;
 `;
 
 export const Modal = styled.div`
@@ -32,19 +33,25 @@ export const Label = styled.label`
   display: block;
   margin-top: 0.5rem;
   font-weight: 500;
+  text-align: left;
 `;
 
 export const Input = styled.input`
   width: 100%;
   padding: 0.4rem;
   margin-top: 0.2rem;
-  border: 1px solid #ccc;
+  padding: 0.6rem;
+  border: 1px solid #2d2d2d;
   border-radius: 4px;
+  font-size: 0.95rem;
+  background: none;
+  color: #2d3748;
 `;
 
 export const Error = styled.small`
   color: red;
   display: block;
+  text-align: right;
 `;
 
 export const Actions = styled.div`
@@ -73,5 +80,6 @@ type ButtonProps = {
         : `
           background: #e0e0e0;
           color: black;
+          border: 1px solid #2d3748;
         `}
   `;

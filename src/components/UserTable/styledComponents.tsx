@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 
 export const TableWrapper = styled.div`
+  max-width: 1200px;
   width: 100%;
   overflow-x: auto;
   margin-top: 1rem;
+  padding: 0px;
+  align-self: center;
 `;
 
 export const Table = styled.table`

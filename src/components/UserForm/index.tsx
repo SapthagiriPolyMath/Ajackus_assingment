@@ -50,19 +50,19 @@ export function UserForm({ initial, onSubmit, onClose }: Props) {
         <Title>{initial ? 'Edit User' : 'Add User'}</Title>
         <form onSubmit={handleSubmit}>
           <Label>First name</Label>
-          <Input value={firstName} onChange={e => setFirstName(e.target.value)} />
+          <Input placeholder='first name' value={firstName} onChange={e => setFirstName(e.target.value)} />
           {errors.firstName && <Error>{errors.firstName}</Error>}
 
           <Label>Last name</Label>
-          <Input value={lastName} onChange={e => setLastName(e.target.value)} />
+          <Input placeholder='last name' value={lastName} onChange={e => setLastName(e.target.value)} />
           {errors.lastName && <Error>{errors.lastName}</Error>}
 
           <Label>Email</Label>
-          <Input value={email} onChange={e => setEmail(e.target.value)} />
+          <Input placeholder='email' value={email} onChange={e => setEmail(e.target.value)} />
           {errors.email && <Error>{errors.email}</Error>}
 
           <Label>Department</Label>
-          <Input value={department} onChange={e => setDepartment(e.target.value)} />
+          <Input placeholder='department' value={department} onChange={e => setDepartment(e.target.value)} />
           {errors.department && <Error>{errors.department}</Error>}
 
           <Actions>

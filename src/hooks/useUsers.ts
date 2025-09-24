@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { User, NewUser, UpdateUser } from '../types/user';
 import { fetchUsers, addUser, updateUser, deleteUser } from '../api/users';
 
-type SortKey = keyof Pick<User, 'firstName' | 'lastName' | 'email' | 'department'>;
+type SortKey = keyof Pick<User, 'id' | 'firstName' | 'lastName' | 'email' | 'department'>;
 
 export function useUsers() {
   const [users, setUsers] = useState<User[]>([]);
@@ -52,13 +52,20 @@ export function useUsers() {
   }, [users, query, filters]);
 
   const sorted = useMemo(() => {
-    const s = [...filtered].sort((a, b) => {
-      const va = (a[sortKey] || '').toString().toLowerCase();
-      const vb = (b[sortKey] || '').toString().toLowerCase();
-      return sortDir === 'asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+    return [...filtered].sort((a, b) => {
+      const va = a[sortKey];
+      const vb = b[sortKey];
+  
+      if (sortKey === 'id') {
+        return sortDir === 'asc' ? (va as number) - (vb as number) : (vb as number) - (va as number);
+      }
+  
+      const vaStr = (va || '').toString().toLowerCase();
+      const vbStr = (vb || '').toString().toLowerCase();
+      return sortDir === 'asc' ? vaStr.localeCompare(vbStr) : vbStr.localeCompare(vaStr);
     });
-    return s;
   }, [filtered, sortKey, sortDir]);
+  
 
   const total = sorted.length;
   const paginated = useMemo(() => {
